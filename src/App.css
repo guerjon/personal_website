@@ -1,0 +1,131 @@
+html{
+  --purple: rgb(160,124,253);
+  font-family: "Courier New";
+  background:black;
+}
+
+.App {
+  text-align: center;
+  background: black;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 50px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+.container-photo {
+  background:red;
+}
+
+.header-image{
+  background-color: "black";
+  height: 200px;
+  width: 100%;
+}
+
+.panel{
+  flex:1;
+  border-color:var(--purple);
+  border-width: 1px;
+  border-style: solid;
+  padding:20px;
+  text-align: left;
+  background: black;
+}
+
+.flex-container {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+
+}
+
+.flex-row{
+  -webkit-flex-direction: row; 
+  flex-direction: row;  
+}
+
+.flex-column{
+  -webkit-flex-direction: column; 
+  flex-direction: column;    
+}
+
+.string-container{
+  margin-left: 5%;
+  width: 100%;
+  color:rgb(223,219,116);
+}
+
+.number-container{
+  color:var(--purple);
+}
+
+.array-container{
+  margin-left: 5%;
+}
+
+.json-container{
+  margin-left: 5%; 
+  width: 100%;
+}
+
+.code-container{
+  background: black;
+}
+
+.let{
+    color:rgb(104,215,389);
+    margin-right: 10px;
+}
+
+.portafolio-container{
+  color:white;
+  font-family: "Courier New";
+}
+
+.portafolio-item-container{
+  width: 100%;
+  margin: 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.portafolio-item{
+  border-color: white;
+  border-style: solid;
+  border-width: 1px;
+  width: 100%;
+  height: 250px;
+  border-radius: 5px;
+  color:white;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
