@@ -124,6 +124,24 @@ html{
   border-radius: 5px;
   color:white;
 }
+.resume-button{
+    width:200px;
+    background:none;
+    color:white;
+    border-radius : 5 ;
+    font-family: "Courier New";
+    border-style:solid;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+}
+
+.resume-button h5{
+  margin-right: 5px;
+}
+
+
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }

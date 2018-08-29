@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Grid,Row,Col,Image,Glyphicon} from 'react-bootstrap';
-
+import resume from './files//Resume.pdf'
 
 const PROGRAMMING_LANGUAGES = 
 [
@@ -23,7 +23,7 @@ let software_developer = {
   title: "Software Enginner",
   experience_years : 4,
   programming_languages : PROGRAMMING_LANGUAGES,
-  companies_array : [
+  worked_companies : [
     {
       name: "SORIANO ARIZA",
       title: "WEB DEVELOPER",
@@ -76,13 +76,18 @@ const Portafolio = () => {
 
 const PortafolioItem = params => {
   const {title,link,type,icon} = params.item
-  console.log("portafolio item",params)
+  var icon = 
+  switch(type){
+
+  }
+
   return(
     <div class="portafolio-item-container">
       <div class="portafolio-item"> 
         <h4>
           {title}
         </h4>
+        <Glyphicon glyph={icon}/>
       </div>
     </div>
   )
@@ -283,20 +288,26 @@ class App extends Component {
                   <div style={{padding:20}}>
                     <Image src="images/me.jpg" alt="images/photo_no_available" responsive rounded/>
                   </div>
-                  <div>
-                    <button style={{width:150,background:"none",color:"white",borderRadius:5,fontFamily:"Courier New"}}>
-                      <div>
-                        Download resume
+                  <div style={{display:"flex",justifyContent:"center"}}>
+                    <a href={resume}>
+                      <div className="resume-button">
+                        <div>
+                          <h5>   
+                            Download resume
+                          </h5>
+                        </div>
+                        <div>
+                          <Glyphicon glyph="glyphicon glyphicon-download"/>
+                        </div>
                       </div>
-                      <Glyphicon glyph="glyphicon glyphicon-download"/>
-                    </button>
-                  </div>
+                    </a>
+                  </div> 
                 </Col>
                 <Col xs={12} sm={12} md={12} lg={4}>
                   <div style={{flex:1,padding:20}}>
                     <div className="panel">
                       <div className="flex-container flex-row">
-                        <VarDeclaration type="var" name="software_developer" sign="="/>
+                        <VarDeclaration type="let" name="software_developer" sign="="/>
                       </div>
                       <JsonItem value={software_developer} /> 
                     </div>
