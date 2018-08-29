@@ -290,7 +290,7 @@ class App extends Component {
                       <div className="resume-button">
                         <div>
                           <h5>   
-                            Download resume
+                            Download resume 1
                           </h5>
                         </div>
                         <div>
