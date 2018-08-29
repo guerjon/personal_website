@@ -46,23 +46,35 @@ let software_developer = {
 let portafolio = [
   {
     title: "Profuturo Purchases",
-    ulr: "http something",
+    ulr: "http://profuturo.guerjon.com/login",
     type: "website",
-    description:""
+    description:"",
+    image: "profuturo.png"
   },
   {
     title: "Sure-Fi Manufacturing App",
     url: "github code",
     type: "ios-app",
     description: "other description",
-    languages: ["swift"]
+    languages: ["swift"],
+    image: "sure-fi-app.png"
   },
   {
     title: "Sure-Fi Android App",
-    url: "android play store",
+    url: "https://play.google.com/store/apps/details?id=com.surefi&hl=en",
     type: "android-app",
     "languages": ["java","javascript"],
-    description: "other description"
+    description: "other description",
+    image: "sure-fi-app.png"
+  },
+  {
+    title: "Sure-Fi Website",
+    url: "http://sure-fi.com/index.html",
+    type: "android-app",
+    "languages": ["java","javascript"],
+    description: "other description",
+    image: "sure-fi-web-site.png"
+
   }
 ]
 
@@ -75,8 +87,8 @@ const Portafolio = () => {
 }
 
 const PortafolioItem = params => {
-  const {title,link,type,icon} = params.item
-  
+  const {title,link,type,icon,image} = params.item
+  const img_ulr = "images/" + image
 
   return(
     <div class="portafolio-item-container">
@@ -84,7 +96,11 @@ const PortafolioItem = params => {
         <h4>
           {title}
         </h4>
-        <Glyphicon glyph={icon}/>
+        <div style={{display:"flex",alignItems:"center",justifyContent:"center"}}>
+          <div style={{width:250}}>
+            <Image src={img_ulr} alt="images/photo_no_available" responsive/>
+          </div>
+        </div>
       </div>
     </div>
   )
@@ -290,7 +306,7 @@ class App extends Component {
                       <div className="resume-button">
                         <div>
                           <h5>   
-                            Download resume 1
+                            Download resume
                           </h5>
                         </div>
                         <div>
