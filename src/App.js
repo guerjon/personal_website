@@ -76,10 +76,7 @@ const Portafolio = () => {
 
 const PortafolioItem = params => {
   const {title,link,type,icon} = params.item
-  var icon = 
-  switch(type){
-
-  }
+  
 
   return(
     <div class="portafolio-item-container">
