@@ -99,14 +99,14 @@ const PortfolioItem = params => {
   const img_ulr = "images/" + image
   if(show_alert){
     return(
-      <Col xs={12} sm={12} md={12} lg={12} style={{marginBottom:10}}>
+      <Col xs={12} sm={12} md={6} lg={12} style={{marginBottom:10}}>
         <div tarjet="_blank" onClick={() => showAlert()} className="remove-btn-style"> 
           <div className="portfolio-item">
             <h4>
               {title}
             </h4>
             <div >
-              <Image src={img_ulr} alt="images/photo_no_available"  width="200" responsive rounded/>
+              <Image src={img_ulr} alt="images/photo_no_available" responsive rounded/>
             </div>
           </div>
         </div>
@@ -114,14 +114,14 @@ const PortfolioItem = params => {
     )
   }else{
     return(
-      <Col xs={12} sm={12} md={12} lg={12} style={{marginBottom:10}}>
+      <Col xs={12} sm={12} md={6} lg={12} style={{marginBottom:10}}>
         <a href={url} tarjet="_blank">
           <div className="portfolio-item">
             <h4>
               {title}
             </h4>
             <div>
-              <Image src={img_ulr} alt="images/photo_no_available"  width="200" responsive rounded/>
+              <Image src={img_ulr} alt="images/photo_no_available"  responsive rounded/>
             </div>
           </div>
         </a>
