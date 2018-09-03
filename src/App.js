@@ -43,22 +43,8 @@ let software_developer = {
   ]
 }
 
-let portafolio = [
-  {
-    title: "Profuturo Purchases",
-    ulr: "http://profuturo.guerjon.com/login",
-    type: "website",
-    description:"",
-    image: "profuturo.png"
-  },
-  {
-    title: "Sure-Fi Manufacturing App",
-    url: "github code",
-    type: "ios-app",
-    description: "other description",
-    languages: ["swift"],
-    image: "sure-fi-app.png"
-  },
+let portfolio = [
+
   {
     title: "Sure-Fi Android App",
     url: "https://play.google.com/store/apps/details?id=com.surefi&hl=en",
@@ -68,42 +54,80 @@ let portafolio = [
     image: "sure-fi-app.png"
   },
   {
+    title: "Sure-Fi Manufacturing App",
+    url: "github code",
+    type: "ios-app",
+    description: "other description",
+    languages: ["swift"],
+    image: "manufacturing-app.png",
+    show_alert : true,
+  },
+  {
     title: "Sure-Fi Website",
-    url: "http://sure-fi.com/index.html",
+    url: "http://sure-fi.com/",
     type: "android-app",
     "languages": ["java","javascript"],
     description: "other description",
     image: "sure-fi-web-site.png"
 
-  }
+  },
+  {
+    title: "Profuturo Purchases",
+    url: "https://profuturo.guerjon.com/login",
+    type: "website",
+    description:"",
+    image: "profuturo.png"
+  },  
 ]
 
-const Portafolio = () => {
-  return(
-    <div>
-      {portafolio.map(x => <PortafolioItem item={x}/>)}
-    </div>
+function showAlert(){
+  alert("This code is private i can't show you, call me and i'll tell you what is about ;).")
+}
+
+const Portfolio = () => {
+  return(  
+    <Grid fluid={true}>
+      <Row>
+        {portfolio.map(x => <PortfolioItem item={x} key={x.url}/>)}
+      </Row>
+    </Grid>
   )
 }
 
-const PortafolioItem = params => {
-  const {title,link,type,icon,image} = params.item
+const PortfolioItem = params => {
+  const {title,url,image,show_alert} = params.item  
   const img_ulr = "images/" + image
-
-  return(
-    <div class="portafolio-item-container">
-      <div class="portafolio-item"> 
-        <h4>
-          {title}
-        </h4>
-        <div style={{display:"flex",alignItems:"center",justifyContent:"center"}}>
-          <div style={{width:250}}>
-            <Image src={img_ulr} alt="images/photo_no_available" responsive/>
+  if(show_alert){
+    return(
+      <Col xs={12} sm={12} md={12} lg={12} style={{marginBottom:10}}>
+        <div tarjet="_blank" onClick={() => showAlert()} className="remove-btn-style"> 
+          <div className="portfolio-item">
+            <h4>
+              {title}
+            </h4>
+            <div >
+              <Image src={img_ulr} alt="images/photo_no_available"  width="200" responsive rounded/>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  )
+      </Col>
+    )
+  }else{
+    return(
+      <Col xs={12} sm={12} md={12} lg={12} style={{marginBottom:10}}>
+        <a href={url} tarjet="_blank">
+          <div className="portfolio-item">
+            <h4>
+              {title}
+            </h4>
+            <div>
+              <Image src={img_ulr} alt="images/photo_no_available"  width="200" responsive rounded/>
+            </div>
+          </div>
+        </a>
+      </Col>
+    )
+  }
 }
 
 const renderBoolean = boolean => {
@@ -124,7 +148,7 @@ const renderNumber = number => {
 
 const renderString = string =>{
   return (
-    <div class="string-container">
+    <div className="string-container">
         "{string}",
     </div>
   )
@@ -226,7 +250,7 @@ const JsonItem = params => {
   const {value} = params
   return (  
     <div className={"flex-container flex-row"}>
-      <ArrayType elements={value}/>
+      <ArrayType elements={value} key={value.name}/>
     </div>
   )
 }
@@ -261,24 +285,8 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-  
-    this.state = { width: 0, height: 0 };
-    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
-
   }
 
-  componentDidMount() {
-    this.updateWindowDimensions();
-    window.addEventListener('resize', this.updateWindowDimensions);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.updateWindowDimensions);
-  }
-
-  updateWindowDimensions() {
-    this.setState({ width: window.innerWidth, height: window.innerHeight });
-  }
 
   render() {
     return (
@@ -299,9 +307,9 @@ class App extends Component {
                     </h6>
                   </div>
                   <div style={{padding:20}}>
-                    <Image src="images/me.jpg" alt="images/photo_no_available" responsive rounded/>
+                    <Image src="images/me.jpg" alt="images/photo_no_available" responsive thumbnail/>
                   </div>
-                  <div style={{display:"flex",justifyContent:"center"}}>
+                  <div style={{display:"flex",alignItems:"center",justifyContent:"center","flex-direction":"column"}}>
                     <a href={resume}>
                       <div className="resume-button">
                         <div>
@@ -314,6 +322,11 @@ class App extends Component {
                         </div>
                       </div>
                     </a>
+                    <div style={{width:50,marginTop:20}}>
+                      <a href="https://www.linkedin.com/in/jonathan-guerrero-4b60a4b4/" tarjet="_blank">
+                        <Image src="images/linkedin.png" responsive/>
+                      </a>
+                    </div>
                   </div> 
                 </Col>
                 <Col xs={12} sm={12} md={12} lg={4}>
@@ -327,12 +340,14 @@ class App extends Component {
                   </div>
                 </Col>
                 <Col xs={12} sm={12} md={12} lg={4}>
-                  <div className="portafolio-container">
-                    <h3>
-                      Portafolio
-                    </h3>
+                  <div style={{flex:1,padding:20}}>
+                    <div className="portfolio-container">
+                      <h3>
+                        Portfolio
+                      </h3>
+                    </div>
+                    <Portfolio />
                   </div>
-                  <Portafolio />
                 </Col>
               </Row>
             </Grid>
