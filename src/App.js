@@ -321,6 +321,7 @@ class App extends Component {
                           <Glyphicon glyph="glyphicon glyphicon-download"/>
                         </div>
                       </div>
+                      
                     </a>
                     <div style={{width:50,marginTop:20}}>
                       <a href="https://www.linkedin.com/in/jonathan-guerrero-4b60a4b4/" tarjet="_blank">
