@@ -1,6 +1,5 @@
 html{
   --purple: rgb(160,124,253);
-  font-family: "Courier New";
   background:black;
 }
 
@@ -104,7 +103,6 @@ html{
 
 .portfolio-container{
   color:white;
-  font-family: "Courier New";
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -123,7 +121,7 @@ html{
 
 .portfolio-item{
   color:white;
-  width: 300px;
+  width: 250px;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -135,8 +133,6 @@ html{
     background:none;
     color:white;
     border-radius : 5 ;
-    font-family: "Courier New";
-    border-style:solid;
     display:flex;
     align-items: center;
     justify-content: center;
@@ -150,6 +146,30 @@ html{
 
 .portafolio-container{
   
+}
+
+.my-image{
+  
+}
+
+.image-container{
+  width: 80%;
+}
+
+.vertical-normal-margin{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.align-items{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.box-shadow{
+  -webkit-box-shadow: 0px 0px 15px 7px rgba(255,255,255,0.43); 
+  box-shadow: 0px 0px 15px 7px rgba(255,255,255,0.43);
 }
 
 @keyframes App-logo-spin {

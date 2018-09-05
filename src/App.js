@@ -306,12 +306,14 @@ class App extends Component {
                       Think the better!
                     </h6>
                   </div>
-                  <div style={{padding:20}}>
-                    <Image src="images/me.jpg" alt="images/photo_no_available" responsive thumbnail/>
+                  <div class=" vertical-normal-margin align-items">
+                    <div className="box-shadow image-container">
+                      <Image className="my-image" src="images/me.jpg" alt="images/photo_no_available" responsive/>
+                    </div>
                   </div>
                   <div style={{display:"flex",alignItems:"center",justifyContent:"center","flex-direction":"column"}}>
                     <a href={resume}>
-                      <div className="resume-button">
+                      <div className="resume-button box-shadow">
                         <div>
                           <h5>   
                             Download resume
