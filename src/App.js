@@ -43,40 +43,44 @@ let software_developer = {
   ]
 }
 
-let portfolio = [
+let portfolio_items = [
 
   {
-    title: "Sure-Fi Android App",
+    title: "Sure-Fi App",
     url: "https://play.google.com/store/apps/details?id=com.surefi&hl=en",
     type: "android-app",
     "languages": ["java","javascript"],
-    description: "other description",
-    image: "sure-fi-app.png"
-  },
-  {
-    title: "Sure-Fi Manufacturing App",
-    url: "github code",
-    type: "ios-app",
-    description: "other description",
-    languages: ["swift"],
-    image: "manufacturing-app.png",
-    show_alert : true,
+    image: "android-square.png",
+    technologies : ["React Native","Java","Android","Javascript"],
+    description: "The Sure-Fi app gives you the ability to connect, configure and pair your Sure-Fi Devices using BLE connection to write commands and read information."
   },
   {
     title: "Sure-Fi Website",
     url: "http://sure-fi.com/",
     type: "android-app",
     "languages": ["java","javascript"],
-    description: "other description",
-    image: "sure-fi-web-site.png"
-
+    image: "sure-fi-website-square.png",
+    technologies : ["React","Bootstrap","CSS","Javascript"],
+    description: "Company Responsive Website, you can see all the information about this technology.",
+  },  
+  {
+    title: "Sure-Fi Manufacturing App",
+    url: "github code",
+    type: "ios-app",
+    languages: ["swift"],
+    image: "ios-square.png",
+    show_alert : true,
+    technologies : ["Swift","IOS"],
+    description: "It allows you configurate connect to the Sure-fi Device to send out selled units",
   },
   {
-    title: "Profuturo Purchases",
+    title: "Profuturo Purchases Website",
     url: "https://profuturo.guerjon.com/login",
     type: "website",
     description:"",
-    image: "profuturo.png"
+    image: "profuturo-square.png",
+    technologies : ["PHP","Javascript","Laravel"],
+    description: "It allows to multiple users place orders of supplies for the company for internal use.",
   },  
 ]
 
@@ -85,50 +89,86 @@ function showAlert(){
 }
 
 const Portfolio = () => {
+
   return(  
     <Grid fluid={true}>
       <Row>
-        {portfolio.map(x => <PortfolioItem item={x} key={x.url}/>)}
+        <Col xs={12} sm={12} md={6} lg={6}>
+          <PortfolioItem item={portfolio_items[0]} key={portfolio_items[0].url}/>
+        </Col>
+        <Col xs={12} sm={12} md={6} lg={6} style={{padding:0}}>
+          <PortfolioItem item={portfolio_items[1]} key={portfolio_items[1].url}/>
+        </Col>
+        <Col xs={12} sm={12} md={6} lg={6} style={{padding:0}}>
+          <PortfolioItem item={portfolio_items[3]} key={portfolio_items[3].url}/>
+        </Col>
+        <Col xs={12} sm={12} md={6} lg={6} style={{padding:0}}>
+          <PortfolioItem item={portfolio_items[2]} key={portfolio_items[2].url}/>
+        </Col>
       </Row>
     </Grid>
   )
 }
 
 const PortfolioItem = params => {
-  const {title,url,image,show_alert} = params.item  
+  const {title,url,image,show_alert,technologies,description} = params.item  
   const img_ulr = "images/" + image
-  if(show_alert){
-    return(
-      <Col xs={12} sm={12} md={6} lg={12} style={{marginBottom:10}}>
-        <div tarjet="_blank" onClick={() => showAlert()} className="remove-btn-style"> 
-          <div className="portfolio-item">
-            <h4>
-              {title}
-            </h4>
-            <div >
-              <Image src={img_ulr} alt="images/photo_no_available" responsive rounded/>
-            </div>
-          </div>
+  
+  return(
+      <a href={url} tarjet="_blank">
+        <div className="portfolio-item box-shadow vertical-normal-margin horizontal-normal-margin">
+          <Row>
+            <Col xs={12} sm={12} md={6} lg={6}>
+              <div className="vertical-align-and-space-around">
+                <div className="title-description-container">
+                  <h2>
+                    {title}
+                  </h2>
+                </div>
+                <div className="description-container">
+                  <div className="description">
+                    <p>
+                      {description}
+                    </p>
+                  </div>
+                </div>     
+              </div>      
+            </Col>
+            <Col xs={12} sm={12} md={6} lg={6}>
+                <div className="flex-align">
+                  <div className="image-container">
+                    <Image src={img_ulr} alt="images/photo_no_available" responsive rounded/>
+                  </div>
+                </div>
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={12} sm={12} md={12} lg={12}>
+                <div className="technologies-container vertical-normal-margin">
+                  {
+                    technologies.map(x => <Technology name={x} key={x.name}/>)
+                  }
+                </div>   
+            </Col>
+          </Row>
         </div>
-      </Col>
-    )
-  }else{
-    return(
-      <Col xs={12} sm={12} md={6} lg={12} style={{marginBottom:10}}>
-        <a href={url} tarjet="_blank">
-          <div className="portfolio-item">
-            <h4>
-              {title}
-            </h4>
-            <div>
-              <Image src={img_ulr} alt="images/photo_no_available"  responsive rounded/>
-            </div>
-          </div>
-        </a>
-      </Col>
-    )
-  }
+      </a>
+    
+  )
 }
+
+const Technology = props => {
+  const name = props.name
+
+  return(
+    <div className="technology-item">
+      <h6>
+        {name}
+      </h6>
+    </div>
+  )
+}
+
 
 const renderBoolean = boolean => {
   return (
@@ -295,20 +335,20 @@ class App extends Component {
             <Grid fluid={true}>
               <Row >
                 <Col xs={12} sm={12} md={12} lg={4}>
-                  <div style={{ color:"white",fontFamily:"Courier New"}}>
+                  <div style={{ color:"white"}}>
                     <hr />
-                    <h4>
-                      The brain works as reactive programming,
-                      thoughts are the events and your actions
-                      is the result of events execution, so you do what you think.
-                    </h4>
-                    <h6>
-                      Think the better!
-                    </h6>
+                    <h3>
+                      Hi! I'm Jonathan Guerrero. 
+                    </h3>
+                    <a href="mailto:guerjon@gmail.com">
+                      <h6>
+                        Lets Talk. 
+                      </h6>
+                    </a> 
                   </div>
                   <div class=" vertical-normal-margin align-items">
-                    <div className="box-shadow image-container">
-                      <Image className="my-image" src="images/me.jpg" alt="images/photo_no_available" responsive/>
+                    <div className="me-image-container">
+                      <Image className="my-image" src="images/me-square.png" alt="images/photo_no_available" rounded responsive/>
                     </div>
                   </div>
                   <div style={{display:"flex",alignItems:"center",justifyContent:"center","flex-direction":"column"}}>
@@ -332,24 +372,14 @@ class App extends Component {
                     </div>
                   </div> 
                 </Col>
-                <Col xs={12} sm={12} md={12} lg={4}>
-                  <div style={{flex:1,padding:20}}>
-                    <div className="panel">
-                      <div className="flex-container flex-row">
-                        <VarDeclaration type="let" name="software_developer" sign="="/>
-                      </div>
-                      <JsonItem value={software_developer} /> 
-                    </div>
-                  </div>
-                </Col>
-                <Col xs={12} sm={12} md={12} lg={4}>
+                <Col xs={12} sm={12} md={12} lg={8}>
                   <div style={{flex:1,padding:20}}>
                     <div className="portfolio-container">
                       <h3>
                         Portfolio
                       </h3>
+                      <Portfolio />
                     </div>
-                    <Portfolio />
                   </div>
                 </Col>
               </Row>
@@ -361,3 +391,18 @@ class App extends Component {
 }
 
 export default App;
+
+
+/*
+                <Col xs={12} sm={12} md={12} lg={4}>
+                  <div style={{flex:1,padding:20}}>
+                    <div className="panel">
+                      <div className="flex-container flex-row">
+                        <VarDeclaration type="let" name="software_developer" sign="="/>
+                      </div>
+                      <JsonItem value={software_developer} /> 
+                    </div>
+                  </div>
+                </Col> 
+
+*/
