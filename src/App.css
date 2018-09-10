@@ -1,12 +1,24 @@
+
+
 html{
   --purple: rgb(160,124,253);
-  background:black;
+  --background-color:white;
+  --font-color: black;
+  --over-color: #FAFAFA;
+  background: var(--background-color);
+  color: var(--font-color);
 }
+
+
+a {
+  text-decoration: none !important; /* no underline */
+}
+
 
 .App {
   text-align: center;
-  background: black;
   font-size: sans-serif;
+
 }
 
 .App-logo {
@@ -18,7 +30,6 @@ html{
   background-color: #222;
   height: 50px;
   padding: 20px;
-  color: white;
 }
 
 .App-title {
@@ -27,10 +38,6 @@ html{
 
 .App-intro {
   font-size: large;
-}
-
-.container-photo {
-  background:red;
 }
 
 .header-image{
@@ -77,7 +84,7 @@ html{
 .string-container{
   margin-left: 5%;
   width: 100%;
-  color:rgb(223,219,116);
+  
 }
 
 .number-container{
@@ -103,15 +110,15 @@ html{
 }
 
 .portfolio-container{
-  color:white;
   text-align: center;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
   width: 100%;
-
+  max-width: 100%;
+  overflow: scroll;
 }
 
 .remove-btn-style{
@@ -121,19 +128,25 @@ html{
 }
 
 .portfolio-item{
-  color:white;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding:10px;
-  
+  width: 100%;
+  margin:0;
+}
+
+.resume-button-container{
+  text-decoration: none; 
+}
+
+.resume-button{
+
 }
 
 .resume-button{
     width:200px;
     background:none;
-    color:white;
     border-radius : 5 ;
     display:flex;
     align-items: center;
@@ -179,10 +192,6 @@ html{
   margin-bottom: 20px;
 }
 
-.horizontal-normal-margin{
-  margin-right: 20px;
-  margin-left: 20px; 
-}
 
 .align-items{
   display: flex;
@@ -191,13 +200,13 @@ html{
 }
 
 .box-shadow{
-  -webkit-box-shadow: 0px 0px 15px 7px rgba(255,255,255,0.43); 
-  box-shadow: 0px 0px 15px 7px rgba(255,255,255,0.43);
+  -webkit-box-shadow: 0px 0px 8px -1px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 8px -1px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 8px -1px rgba(0,0,0,0.75);
 }
 
 .box-shadow:hover {
-  -webkit-box-shadow: 0px 0px 15px 7px rgba(255,255,255,0.90); 
-  box-shadow: 0px 0px 15px 7px rgba(255,255,255,0.90);
+
 }
 
 .technologies-container{
@@ -236,24 +245,92 @@ html{
   flex-direction: column;
 }
 
+
+@media screen and (min-width: 768px) {
+
+  .App{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .horizontal-normal-margin{
+    margin-right: 20px;
+    margin-left: 20px; 
+  }
+
+
+}
+
+
 @media screen and (min-width: 1024px) {
+
   .portfolio-item{
-    height: 400px;
+    height: 300px;
+    width: 250px;
+    padding: 20px;
+    border-radius: 20px;
+    -webkit-box-shadow: 0px 0px 8px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 8px -1px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 8px -1px rgba(0,0,0,0.75);       
+  }
+
+  .portfolio-item:hover{
+    background: var(--over-color);
+    border-radius: 20px;
+
   }
 
   .me-image-container{
-    width: 400px;
+    width: 150px;
   }  
 
   .image-container{
     width: 80%;
     margin-top: 0;
     margin-bottom: 0;
+
   }
 
-}
+  .picture-container{
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  .App{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+  }
+
+  .app-container{
+    width: 1000px;
+    height : 600px;
+    border-radius: 20px;
+    background: white;
+    -webkit-box-shadow: 0px 0px 8px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 8px -1px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 8px -1px rgba(0,0,0,0.75);
+
+  }
+
+  .portfolio-container{
+    height: 550px;
+  }
+
+  .resume-button:hover{
+    background: var(--over-color)
+  }
+
+  .horizontal-normal-margin{
+    margin-right: 20px;
+    margin-left: 20px; 
+  }
+
 }

@@ -89,11 +89,10 @@ function showAlert(){
 }
 
 const Portfolio = () => {
-
   return(  
     <Grid fluid={true}>
       <Row>
-        <Col xs={12} sm={12} md={6} lg={6}>
+        <Col xs={12} sm={12} md={6} lg={6} style={{padding:0}}>
           <PortfolioItem item={portfolio_items[0]} key={portfolio_items[0].url}/>
         </Col>
         <Col xs={12} sm={12} md={6} lg={6} style={{padding:0}}>
@@ -116,39 +115,28 @@ const PortfolioItem = params => {
   
   return(
       <a href={url} tarjet="_blank">
-        <div className="portfolio-item box-shadow vertical-normal-margin horizontal-normal-margin">
+        <div className="portfolio-item vertical-normal-margin horizontal-normal-margin">
           <Row>
-            <Col xs={12} sm={12} md={6} lg={6}>
+            <Col xs={12} sm={12} md={6} lg={12}>
               <div className="vertical-align-and-space-around">
                 <div className="title-description-container">
-                  <h2>
+                  <h4>
                     {title}
-                  </h2>
+                  </h4>
                 </div>
                 <div className="description-container">
                   <div className="description">
-                    <p>
-                      {description}
-                    </p>
+                    
                   </div>
                 </div>     
               </div>      
             </Col>
-            <Col xs={12} sm={12} md={6} lg={6}>
+            <Col xs={12} sm={12} md={6} lg={12}>
                 <div className="flex-align">
                   <div className="image-container">
                     <Image src={img_ulr} alt="images/photo_no_available" responsive rounded/>
                   </div>
                 </div>
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={12} sm={12} md={12} lg={12}>
-                <div className="technologies-container vertical-normal-margin">
-                  {
-                    technologies.map(x => <Technology name={x} key={x.name}/>)
-                  }
-                </div>   
             </Col>
           </Row>
         </div>
@@ -330,49 +318,51 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">        
-          <div> 
+      <div className="App">      
+          <div className="app-container"> 
             <Grid fluid={true}>
               <Row >
-                <Col xs={12} sm={12} md={12} lg={4}>
-                  <div style={{ color:"white"}}>
-                    <hr />
-                    <h3>
-                      Hi! I'm Jonathan Guerrero. 
-                    </h3>
-                    <a href="mailto:guerjon@gmail.com">
-                      <h6>
-                        Lets Talk. 
-                      </h6>
-                    </a> 
-                  </div>
-                  <div class=" vertical-normal-margin align-items">
-                    <div className="me-image-container">
-                      <Image className="my-image" src="images/me-square.png" alt="images/photo_no_available" rounded responsive/>
+                <Col xs={12} sm={12} md={4} lg={4}>
+                  <div class="picture-container">
+                    <div >
+                      <hr />
+                      <h3>
+                        Hi! I'm Jonathan Guerrero. 
+                      </h3>
+                      <a href="mailto:guerjon@gmail.com">
+                        <h6>
+                          Lets Talk. 
+                        </h6>
+                      </a> 
                     </div>
-                  </div>
-                  <div style={{display:"flex",alignItems:"center",justifyContent:"center","flex-direction":"column"}}>
-                    <a href={resume}>
-                      <div className="resume-button box-shadow">
-                        <div>
-                          <h5>   
-                            Download resume
-                          </h5>
-                        </div>
-                        <div>
-                          <Glyphicon glyph="glyphicon glyphicon-download"/>
-                        </div>
+                    <div className=" vertical-normal-margin align-items">
+                      <div className="me-image-container">
+                        <Image className="my-image" src="images/me-square.png" alt="images/photo_no_available" rounded responsive/>
                       </div>
-                      
-                    </a>
-                    <div style={{width:50,marginTop:20}}>
-                      <a href="https://www.linkedin.com/in/jonathan-guerrero-4b60a4b4/" tarjet="_blank">
-                        <Image src="images/linkedin.png" responsive/>
-                      </a>
                     </div>
-                  </div> 
+                    <div style={{display:"flex",alignItems:"center",justifyContent:"center","flexDirection":"column"}}>
+                      <a href={resume}>
+                        <div className="resume-button box-shadow">
+                          <div>
+                            <h5>   
+                              Download resume
+                            </h5>
+                          </div>
+                          <div>
+                            <Glyphicon glyph="glyphicon glyphicon-download"/>
+                          </div>
+                        </div>
+                        
+                      </a>
+                      <div style={{width:50,marginTop:20}}>
+                        <a href="https://www.linkedin.com/in/jonathan-guerrero-4b60a4b4/" tarjet="_blank">
+                          <Image src="images/linkedin.png" responsive/>
+                        </a>
+                      </div>
+                    </div> 
+                  </div>
                 </Col>
-                <Col xs={12} sm={12} md={12} lg={8}>
+                <Col xs={12} sm={12} md={8} lg={8}>
                   <div style={{flex:1,padding:20}}>
                     <div className="portfolio-container">
                       <h3>
@@ -385,6 +375,7 @@ class App extends Component {
               </Row>
             </Grid>
           </div>
+  
        </div>
     );
   }
@@ -404,5 +395,20 @@ export default App;
                     </div>
                   </div>
                 </Col> 
+
+*/
+
+
+/*
+          <Row>
+            <Col xs={12} sm={12} md={12} lg={12}>
+                <div className="technologies-container vertical-normal-margin">
+                  {
+                    technologies.map(x => <Technology name={x} key={x.name}/>)
+                  }
+                </div>   
+            </Col>
+          </Row>
+
 
 */
