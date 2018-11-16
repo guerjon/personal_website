@@ -1,0 +1,1 @@
+export const OXFORD_DICTIONARIES = "https://od-api-demo.oxforddictionaries.com:443/api/v1/domains/{en}/{es}"

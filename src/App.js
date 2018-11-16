@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import './App.css';
 import { Grid,Row,Col,Image,Glyphicon} from 'react-bootstrap';
 import resume from './files//Resume.pdf'
+import Particles from 'react-particles-js'
+import {OXFORD_DICTIONARIES} from "./urls"
+import axios from 'axios';
 
-const PROGRAMMING_LANGUAGES = 
+/*const PROGRAMMING_LANGUAGES = 
 [
   "Javascript (Expert)",
   "Java (Proficient)",
@@ -13,11 +16,11 @@ const PROGRAMMING_LANGUAGES =
   "Haskell (Basic)",
   "C (Prior experience)"
 ]
-
+*/
 const open_bracket = "{"
 const close_bracket = "}"
 
-let software_developer = {
+/*let software_developer = {
   name: "Jonathan",
   last_name: "Guerrero",
   title: "Software Enginner",
@@ -41,7 +44,7 @@ let software_developer = {
       end_year: "Current Job"
     }
   ]
-}
+}*/
 
 let portfolio_items = [
 
@@ -77,16 +80,15 @@ let portfolio_items = [
     title: "Profuturo Purchases Website",
     url: "https://profuturo.guerjon.com/login",
     type: "website",
-    description:"",
     image: "profuturo-square.png",
     technologies : ["PHP","Javascript","Laravel"],
     description: "It allows to multiple users place orders of supplies for the company for internal use.",
   },  
 ]
 
-function showAlert(){
+/*function showAlert(){
   alert("This code is private i can't show you, call me and i'll tell you what is about ;).")
-}
+}*/
 
 const Portfolio = () => {
   return(  
@@ -110,7 +112,7 @@ const Portfolio = () => {
 }
 
 const PortfolioItem = params => {
-  const {title,url,image,show_alert,technologies,description} = params.item  
+  const {title,url,image} = params.item  
   const img_ulr = "images/" + image
   
   return(
@@ -144,7 +146,7 @@ const PortfolioItem = params => {
     
   )
 }
-
+/*
 const Technology = props => {
   const name = props.name
 
@@ -156,7 +158,7 @@ const Technology = props => {
     </div>
   )
 }
-
+*/
 
 const renderBoolean = boolean => {
   return (
@@ -263,7 +265,7 @@ const processElement = element => {
     return ""
   }
 }
-
+/*
 const ArrayType = params => {
   return (
     <div className="flex-container ">
@@ -273,7 +275,8 @@ const ArrayType = params => {
     </div>
   )
 }
-
+*/
+/*
 const JsonItem = params => {
   const {value} = params
   return (  
@@ -282,16 +285,16 @@ const JsonItem = params => {
     </div>
   )
 }
-
-
+*/
+/*
 const Sign = params => {
   return (
     <div style={{color:"red",marginLeft:10}}>
       {params.sign}
     </div>
   )
-}
-
+}*/ 
+/*
 const VarDeclaration = params => {
   const {type,name,sign} = params
   return (
@@ -307,23 +310,51 @@ const VarDeclaration = params => {
       </div>
     </div>
   )
-}
+}*/
 
 class App extends Component {
 
-  constructor(props) {
-    super(props);
+
+  componentDidMount(){
+    console.log("mames")
+    this.fetchDictionaryApy()
   }
 
 
+  async fetchDictionaryApy(){
+    let response = await axios.get('https://jsonplaceholder.typicode.com/users')
+    console.table(response.data)
+      
+  }
+
   render() {
     return (
-      <div className="App">      
-          <div className="app-container"> 
+      <div>
+        <Particles 
+                params={{
+                  particles: {
+                    line_linked: {
+                      shadow: {
+                        enable: true,
+                        color: "#3CA9D1",
+                        blur: 5
+                      }
+                    }
+                  }
+                }}
+                style={{
+                  width: 100,
+                  height:100,
+                  zIndex:1
+                }}
+        >
+        </Particles>
+        <div className="App" style={{zIndex:2}}>       
+          <div className="app-container" style={{zIndex:3}}>  
             <Grid fluid={true}>
               <Row >
                 <Col xs={12} sm={12} md={4} lg={4}>
-                  <div class="picture-container">
+                  <div className="picture-container">
                     <div >
                       <hr />
                       <h3>
@@ -337,7 +368,7 @@ class App extends Component {
                     </div>
                     <div className=" vertical-normal-margin align-items">
                       <div className="me-image-container">
-                        <Image className="my-image" src="images/me-square.png" alt="images/photo_no_available" rounded responsive/>
+                        <Image className="my-image" src="images/me.jpg" alt="images/photo_no_available" rounded responsive/>
                       </div>
                     </div>
                     <div style={{display:"flex",alignItems:"center",justifyContent:"center","flexDirection":"column"}}>
@@ -354,10 +385,17 @@ class App extends Component {
                         </div>
                         
                       </a>
-                      <div style={{width:50,marginTop:20}}>
-                        <a href="https://www.linkedin.com/in/jonathan-guerrero-4b60a4b4/" tarjet="_blank">
-                          <Image src="images/linkedin.png" responsive/>
-                        </a>
+                      <div className="flex-row-align">
+                        <div style={{width:40,marginTop:20,marginRight:20}}>
+                          <a href="https://www.linkedin.com/in/jonathan-guerrero-4b60a4b4/" tarjet="_blank">
+                            <Image src="images/linkedin.png" responsive/>
+                          </a>
+                        </div>
+                        <div style={{width:50,marginTop:20}}>
+                          <a href="https://github.com/guerjon" tarjet="_blank">
+                            <Image src="images/github.png" responsive/>
+                          </a>
+                        </div>
                       </div>
                     </div> 
                   </div>
@@ -365,18 +403,22 @@ class App extends Component {
                 <Col xs={12} sm={12} md={8} lg={8}>
                   <div style={{flex:1,padding:20}}>
                     <div className="portfolio-container">
-                      <h3>
-                        Portfolio
-                      </h3>
+                      <div className="flex-row-align">
+                        <h3 style={{marginRight:5}}>
+                          Portfolio
+                        </h3>
+                        <Image src="images/porfolio.png" width="30"/>
+                      </div>
                       <Portfolio />
+                      <hr />
                     </div>
                   </div>
                 </Col>
               </Row>
             </Grid>
           </div>
-  
        </div>
+      </div>
     );
   }
 }
